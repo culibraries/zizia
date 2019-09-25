@@ -43,3 +43,5 @@ workflows:
         jobs:
             - build:
                 name: ruby2-5-3
+notifications:
+    webhooks: https://coveralls.io/webhook
