@@ -3,7 +3,7 @@
 require 'zizia'
 
 class ModularImporter
-  DEDUPLICATION_FIELD = 'identifier'
+  DEDUPLICATION_FIELD = ENV.fetch('DEDUPLICATION_FIELD')
 
   def initialize(csv_import)
     @csv_import = csv_import
