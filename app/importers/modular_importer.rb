@@ -38,7 +38,8 @@ class ModularImporter
       pre_ingest_work = Zizia::PreIngestWork.new(csv_import_detail_id: csv_import_detail.id)
 
       record.mapper.files.each do |child_file|
-        full_path = Dir.glob("#{ENV['IMPORT_PATH']}/**/#{child_file}").first
+        full_path = "#{ENV['IMPORT_PATH']}/#{child_file}"
+        #full_path = Dir.glob("#{ENV['IMPORT_PATH']}/**/#{child_file}").first
         pre_ingest_file = Zizia::PreIngestFile.new(row_number: index + 1,
                                                    pre_ingest_work: pre_ingest_work,
                                                    filename: child_file,
