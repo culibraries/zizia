@@ -31,7 +31,7 @@ module Zizia
     ##
     # @return [Enumerable<Symbol>] The fields the mapper can process.
     def fields
-      core_fields + basic_fields + [:visibility, :files]
+      core_fields + basic_fields + cuboulder_fields + [:visibility, :files]
     end
 
     # Properties defined with `multiple: false` in
@@ -56,7 +56,60 @@ module Zizia
     def import_url
       single_value('import_url')
     end
-
+    def admin_set_id
+      single_value('admin_set_id')
+    end
+    def date_available
+      single_value('date_available')
+    end
+    def date_issued
+      single_value('date_issued')
+    end
+    def replaces
+      single_value('replaces')
+    end
+    def doi
+      single_value('doi')
+    end
+    def embargo_reason
+      single_value('embargo_reason')
+    end
+    def degree_grantors
+      single_value('degree_grantors')
+    end
+    def peerreviewed
+      single_value('peerreviewed')
+    end
+    def graduation_year
+      single_value('graduation_year')
+    end
+    def degree_level
+      single_value('degree_level')
+    end
+    def has_journal 
+      single_value('has_journal')
+    end
+    def has_number 
+      single_value('has_number')
+    end
+    def has_volume
+      single_value('has_volume')
+    end
+    def conference_location
+      single_value('conference_location')
+    end
+    def conference_name
+      single_value('conference_name')
+    end
+    def has_journal
+      single_value('has_journal')
+    end
+    def has_number
+      single_value('has_number')
+    end
+    def has_volume
+      single_value('has_volume')
+    end
     # We should accept visibility values that match the UI and transform them into
     # the controlled vocabulary term expected by Hyrax
     def visibility
@@ -152,5 +205,29 @@ module Zizia
          :based_near, :related_url,
          :bibliographic_citation, :source]
       end
+      # CU Boulder Overide
+      def cuboulder_fields
+        wtype=ENV.fetch('WORK_TYPE')
+        if wtype=="GraduateThesisOrDissertation" then
+        [ :degree_name,:abstract,:academic_affiliation,:additional_information,:alt_title,:contributor_advisor,
+          :contributor_committeemember,:date_available,:date_issued,:degree_grantors,:degree_level,
+          :doi,:embargo_reason,:graduation_year, :peerreviewed,:replaces,:language,:admin_set_id,
+        ]
+        elsif wtype=="UndergraduateHonorsThesis" then
+          [ :abstract,:academic_affiliation,:additional_information,:alt_title,:contributor_advisor,
+            :contributor_committeemember,:date_available,:date_issued,:degree_grantors,:peerreviewed,
+            :doi,:embargo_reason, :replaces,:language,:admin_set_id,
+          ]
+        elsif wtype=="Article" then
+          [ :abstract,:academic_affiliation,:additional_information,:alt_title,:date_available,:date_issued,
+            :doi,:embargo_reason, :peerreviewed,:replaces,:language,:admin_set_id,:has_journal,:has_number,:has_volume,
+            :issn,:editor, :in_series,:file_extent
+          ]
+        end
+        #  :editor,:has_journal,:has_number,:has_volume,:in_series,:is_referenced_by,:isbn,:issn,
+        #  :other_affiliation,:conference_location,:conference_name,:bibliographic_citation
+        #]
+      end
+      
   end
 end
