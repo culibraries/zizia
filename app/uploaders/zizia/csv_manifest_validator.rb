@@ -56,9 +56,9 @@ module Zizia
       def cuboulder
         [ 'degree_name','abstract','academic_affiliation','additional_information','alt_title','contributor_advisor',
           'contributor_committeemember','date_available','date_issued','degree_grantors','degree_level',
-          'doi','embargo_reason','graduation_year',' peerreviewed','replaces','related_url','language','admin_set_id',
+          'doi','embargo_reason','graduation_year','peerreviewed','replaces','related_url','language','admin_set_id',
           'editor','has_journal','has_number','has_volume','in_series','is_referenced_by','isbn','issn',
-          'other_affiliation','conference_location','conference_name','bibliographic_citation'
+          'other_affiliation','conference_location','conference_name','bibliographic_citation','file_extent','file_format'
         ]
       end
 

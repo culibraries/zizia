@@ -32,6 +32,10 @@ module Zizia
         model=UndergraduateHonorsThesis 
       elsif wtype=="Article" then
         model=Article
+      elsif wtype=="Book" then
+        model=Book
+      elsif wtype=="BookChapter" then
+        model=BookChapter
       end
       model
     end
