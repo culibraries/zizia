@@ -228,7 +228,35 @@ module Zizia
             :doi,:embargo_reason, :peerreviewed,:replaces,:language,:admin_set_id,
             :isbn,:editor, :in_series,:file_extent, :file_format
           ]
+        elsif wtype == "ConferenceProceeding" then
+          [ :abstract,:academic_affiliation,:additional_information,:alt_title,:date_available,:date_issued,
+            :doi,:embargo_reason, :peerreviewed,:replaces,:language,:admin_set_id,:has_journal,:has_number,:has_volume,
+            :issn, :isbn, :conference_location,:conference_name,:other_affiliation,:editor, :in_series,:file_extent, :file_format,
+            :is_referenced_by
+          ]
+         
+        elsif wtype == "Presentation" then
+          [ :abstract,:academic_affiliation,:additional_information,:alt_title,:date_available,:date_issued,
+            :doi,:embargo_reason, :peerreviewed,:replaces,:language,:admin_set_id,:is_referenced_by,
+            :conference_location,:conference_name,:other_affiliation,:editor, :in_series,:file_extent, :file_format
+          ]
+        elsif wtype == "Dataset" then
+          [ :abstract,:academic_affiliation,:additional_information,:alt_title,:date_available,:date_issued,
+            :doi,:embargo_reason, :peerreviewed,:replaces,:language,:admin_set_id,:is_referenced_by,
+            :other_affiliation,:editor, :in_series,:file_extent, :file_format
+          ]
+        elsif wtype == "Report" then
+          [ :abstract,:academic_affiliation,:additional_information,:alt_title,:date_available,:date_issued,
+            :doi,:embargo_reason, :peerreviewed,:replaces,:language,:admin_set_id,:is_referenced_by,
+            :other_affiliation,:editor, :in_series,:file_extent, :file_format
+          ]
+        elsif wtype == "Default"
+          [ :abstract,:academic_affiliation,:additional_information,:alt_title,:date_available,:date_issued,
+            :doi,:embargo_reason, :peerreviewed,:replaces,:language,:admin_set_id,:is_referenced_by,
+            :other_affiliation,:editor, :in_series,:file_extent, :file_format
+          ]
         end
+        
         #  :editor,:has_journal,:has_number,:has_volume,:in_series,:is_referenced_by,:isbn,:issn,
         #  :other_affiliation,:conference_location,:conference_name,:bibliographic_citation
         #]
@@ -236,3 +264,4 @@ module Zizia
       
   end
 end
+

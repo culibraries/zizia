@@ -36,6 +36,16 @@ module Zizia
         model=Book
       elsif wtype=="BookChapter" then
         model=BookChapter
+      elsif wtype == "ConferenceProceeding" then
+        model=ConferenceProceeding
+      elsif wtype == "Presentation" then
+        model= Presentation
+      elsif wtype == "Report"
+        model= Report
+      elsif wtype == "Dataset"
+        model = Dataset
+      elsif wtype == "Default"
+        model= Default
       end
       model
     end
