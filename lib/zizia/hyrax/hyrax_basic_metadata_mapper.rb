@@ -110,6 +110,9 @@ module Zizia
     def has_volume
       single_value('has_volume')
     end
+    def event_date
+      single_value('event_date')
+    end
     # We should accept visibility values that match the UI and transform them into
     # the controlled vocabulary term expected by Hyrax
     def visibility
@@ -231,14 +234,14 @@ module Zizia
         elsif wtype == "ConferenceProceeding" then
           [ :abstract,:academic_affiliation,:additional_information,:alt_title,:date_available,:date_issued,
             :doi,:embargo_reason, :peerreviewed,:replaces,:language,:admin_set_id,:has_journal,:has_number,:has_volume,
-            :issn, :isbn, :conference_location,:conference_name,:other_affiliation,:editor, :in_series,:file_extent, :file_format,
+            :issn, :isbn, :conference_location,:conference_name,:event_date,:other_affiliation,:editor, :in_series,:file_extent, :file_format,
             :is_referenced_by
           ]
          
         elsif wtype == "Presentation" then
           [ :abstract,:academic_affiliation,:additional_information,:alt_title,:date_available,:date_issued,
             :doi,:embargo_reason, :peerreviewed,:replaces,:language,:admin_set_id,:is_referenced_by,
-            :conference_location,:conference_name,:other_affiliation,:editor, :in_series,:file_extent, :file_format
+            :conference_location,:conference_name,:event_date,:other_affiliation,:editor, :in_series,:file_extent, :file_format
           ]
         elsif wtype == "Dataset" then
           [ :abstract,:academic_affiliation,:additional_information,:alt_title,:date_available,:date_issued,
