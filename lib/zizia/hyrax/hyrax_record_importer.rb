@@ -53,12 +53,21 @@ module Zizia
     def initialize(attributes: {})
       # These attributes are persisted in the CsvImportDetail model
       @csv_import_detail = attributes[:csv_import_detail]
-      @deduplication_field = ENV.fetch('DEDUPLICATION_FIELD')
-      @collection_id = csv_import_detail.collection_id
-      @batch_id = csv_import_detail.batch_id
-      @success_count = csv_import_detail.success_count
-      @failure_count = csv_import_detail.failure_count
-      find_depositor(csv_import_detail.depositor_id)
+      if defined?(csv_import_detail)
+        @deduplication_field = csv_import_detail.deduplication_field
+        @collection_id = csv_import_detail.collection_id
+        @batch_id = csv_import_detail.batch_id
+        @success_count = csv_import_detail.success_count
+        @failure_count = csv_import_detail.failure_count
+        find_depositor(csv_import_detail.depositor_id)
+      else
+        @deduplication_field = ENV.fetch('DEDUPLICATION_FIELD')
+        @collection_id = '1c18df763'
+        @batch_id = 1
+        @success_count = 0
+        @failure_count = 0
+        find_depositor('dutr5288@colorado.edu')
+      end
     end
 
     # "depositor" is a required field for Hyrax.  If
