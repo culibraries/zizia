@@ -69,7 +69,7 @@ module Zizia
       @success_count = csv_import_detail.success_count
       @failure_count = csv_import_detail.failure_count
       find_depositor(csv_import_detail.depositor_id)
-
+    end
     # "depositor" is a required field for Hyrax.  If
     # it hasn't been set, set it to the Hyrax default
     # batch user.
