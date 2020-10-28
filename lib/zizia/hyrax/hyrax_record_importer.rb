@@ -55,7 +55,7 @@ module Zizia
       @csv_import_detail = attributes[:csv_import_detail]
     
       if csv_import_detail.blank?
-        csv_import_detail.deduplication_field= ENV.fetch('DEDUPLICATION_FIELD')
+        csv_import_detail.deduplication_field = ENV.fetch('DEDUPLICATION_FIELD')
         csv_import_detail.collection_id = '1c18df763'
         csv_import_detail.batch_id = 1
         csv_import_detail.success_count = 0
