@@ -53,15 +53,15 @@ module Zizia
     def initialize(attributes: {})
       # These attributes are persisted in the CsvImportDetail model
       @csv_import_detail = attributes[:csv_import_detail]
-      puts csv_import_detail
-      if csv_import_detail.blank?
-          csv_import_detail.deduplication_field = ENV.fetch('DEDUPLICATION_FIELD')
-          csv_import_detail.collection_id = '1c18df763'
-          csv_import_detail.batch_id = 1
-          csv_import_detail.success_count = 0
-          csv_import_detail.failure_count = 0
-          csv_import_detail.depositor_id = 'dutr5288@colorado.edu'
-      end
+#       puts csv_import_detail
+#       if csv_import_detail.blank?
+#           csv_import_detail.deduplication_field = ENV.fetch('DEDUPLICATION_FIELD')
+#           csv_import_detail.collection_id = '1c18df763'
+#           csv_import_detail.batch_id = 1
+#           csv_import_detail.success_count = 0
+#           csv_import_detail.failure_count = 0
+#           csv_import_detail.depositor_id = 'dutr5288@colorado.edu'
+#       end
       
       @deduplication_field = csv_import_detail.deduplication_field
       @collection_id = csv_import_detail.collection_id
