@@ -185,7 +185,7 @@ module Zizia
       # We assume the object was created as expected if the actor stack returns true.
       # Note that for now the update stack will only update metadata and update collection membership, it will not re-import files.
       def update_for(existing_record:, update_record:)
-        updater = case 'HyraxMetadataOnly'
+        updater = case 'HyraxDelete'
                   when 'HyraxMetadataOnly'
                     Zizia::HyraxMetadataOnlyUpdater.new(csv_import_detail: csv_import_detail,
                                                         existing_record: existing_record,
