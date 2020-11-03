@@ -53,16 +53,6 @@ module Zizia
     def initialize(attributes: {})
       # These attributes are persisted in the CsvImportDetail model
       @csv_import_detail = attributes[:csv_import_detail]
-#       puts csv_import_detail
-#       if csv_import_detail.blank?
-#           csv_import_detail.deduplication_field = ENV.fetch('DEDUPLICATION_FIELD')
-#           csv_import_detail.collection_id = '1c18df763'
-#           csv_import_detail.batch_id = 1
-#           csv_import_detail.success_count = 0
-#           csv_import_detail.failure_count = 0
-#           csv_import_detail.depositor_id = 'dutr5288@colorado.edu'
-#       end
-      
       @deduplication_field = csv_import_detail.deduplication_field
       @collection_id = csv_import_detail.collection_id
       @batch_id = csv_import_detail.batch_id
@@ -227,15 +217,15 @@ module Zizia
         base_url = ENV.fetch('ROOT_URL', 'http://localhost:3000')
         "#{base_url}/concern/#{url_section}/#{id}"
       end
-      def save_cybercom(context_key,front_end_url,samvera_url)
-        query= '.json?query={"filter":{"context_key":"' + context_key + '","front_end_url":"' + front_end_url + '"}}'
-        catUrl=ENV.fetch('SCHOLAR_CATALOG',"https://libapps.colorado.edu/api/catalog/data/catalog/cuscholar-final")
+      def save_cybercom(zip_file_number,xml_url)
+        query= '.json?query={"filter":{"zip_file_number":"' + zip_file_number + '","xml_url":"' + xml_url + '"}}'
+        catUrl=ENV.fetch('ETD_API_URL',"https://test-libapps.colorado.edu/api/catalog/data/catalog/etd-loader")
         url= catUrl + query
         catlog_token=ENV.fetch('SCHOLAR_CATALOG_TOKEN','developmentTokenNotNeeded')
         headers={"Content-Type"=>"application/json", "Authorization"=>"Token #{catlog_token}"}
         response=RestClient.get(url)
         record=JSON.parse(response)['results'][0]
-        record['samvera_url']=samvera_url
+        record['xml_url']=xml_url
         url = "#{catUrl}/#{record['_id']}.json"
         response=RestClient.put(url,record.to_json ,headers=headers)
       end
@@ -260,9 +250,9 @@ module Zizia
             f << "#{batch_id} , #{created.id} , #{new_url} , #{attrs[:replaces]} , #{attrs[:title]&.first} \n"
           end
           replace= "#{attrs[:replaces]}"
-#           if Rails.env.production?
-#              save_cybercom(replace.split('|')[0],replace.split('|')[1],new_url)
-#           end
+          if Rails.env.production?
+             save_cybercom(replace.split('|')[0],replace.split('|')[1])
+          end
         else
           # Log Errors for batch import
           open(Rails.root.join('tmp',"load_batch#{batch_id}_errors.out"), 'a') do |f|
