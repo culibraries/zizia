@@ -250,9 +250,9 @@ module Zizia
             f << "#{batch_id} , #{created.id} , #{new_url} , #{attrs[:replaces]} , #{attrs[:title]&.first} \n"
           end
           replace= "#{attrs[:replaces]}"
-          if Rails.env.production?
-             save_cybercom(replace.split('|')[0],replace.split('|')[1])
-          end
+#           if Rails.env.production?
+#              save_cybercom(replace.split('|')[0],replace.split('|')[1])
+#           end
         else
           # Log Errors for batch import
           open(Rails.root.join('tmp',"load_batch#{batch_id}_errors.out"), 'a') do |f|
