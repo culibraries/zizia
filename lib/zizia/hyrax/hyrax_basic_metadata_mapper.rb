@@ -31,7 +31,7 @@ module Zizia
     ##
     # @return [Enumerable<Symbol>] The fields the mapper can process.
     def fields
-      core_fields + basic_fields + cuboulder_fields + [:visibility, :files]
+      core_fields + basic_fields + cuboulder_fields + [:visibility, :files, :embargo_release_date]
     end
 
     # Properties defined with `multiple: false` in
@@ -208,8 +208,7 @@ module Zizia
          :rights_statement, :publisher, :date_created,
          :subject, :language, :identifier,
          :based_near, :related_url,
-         :bibliographic_citation, :source,
-         :visibility_during_embargo, :embargo_release_date, :visibility_after_embargo]
+         :bibliographic_citation, :source]
       end
       # CU Boulder Overide
       def cuboulder_fields
