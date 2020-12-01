@@ -214,7 +214,7 @@ module Zizia
         if wtype=="GraduateThesisOrDissertation" then
         [ :degree_name,:abstract,:academic_affiliation,:additional_information,:alt_title,:contributor_advisor,
           :contributor_committeemember,:date_available,:date_issued,:degree_grantors,:degree_level,
-          :doi,:embargo_reason,:graduation_year, :peerreviewed,:replaces,:language,:admin_set_id,
+          :doi,:embargo_reason,:graduation_year, :peerreviewed,:replaces,:language,:admin_set_id,:embargo_release_date
         ]
         elsif wtype=="UndergraduateHonorsThesis" then
           [ :abstract,:academic_affiliation,:additional_information,:alt_title,:contributor_advisor,
