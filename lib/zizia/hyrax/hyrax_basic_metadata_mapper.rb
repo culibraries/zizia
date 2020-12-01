@@ -31,7 +31,7 @@ module Zizia
     ##
     # @return [Enumerable<Symbol>] The fields the mapper can process.
     def fields
-      core_fields + basic_fields + cuboulder_fields + [:visibility, :files, :embargo_release_date]
+      core_fields + basic_fields + cuboulder_fields + [:visibility, :files]
     end
 
     # Properties defined with `multiple: false` in
@@ -119,8 +119,6 @@ module Zizia
       case metadata[matching_header('visibility')]&.downcase&.gsub(/\s+/, "")
       when 'embargo'
         'embargo'
-      when 'public'
-        'open'
       when 'open'
         'open'
       when 'registered'
