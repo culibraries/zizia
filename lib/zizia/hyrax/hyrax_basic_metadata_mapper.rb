@@ -86,10 +86,10 @@ module Zizia
     def degree_level
       single_value('degree_level')
     end
-    def has_journal 
+    def has_journal
       single_value('has_journal')
     end
-    def has_number 
+    def has_number
       single_value('has_number')
     end
     def has_volume
@@ -117,6 +117,8 @@ module Zizia
     # the controlled vocabulary term expected by Hyrax
     def visibility
       case metadata[matching_header('visibility')]&.downcase&.gsub(/\s+/, "")
+      when 'embargo'
+        'embargo'
       when 'public'
         'open'
       when 'open'
@@ -206,7 +208,8 @@ module Zizia
          :rights_statement, :publisher, :date_created,
          :subject, :language, :identifier,
          :based_near, :related_url,
-         :bibliographic_citation, :source]
+         :bibliographic_citation, :source,
+         :visibility_during_embargo, :embargo_release_date, :visibility_after_embargo]
       end
       # CU Boulder Overide
       def cuboulder_fields
@@ -237,7 +240,7 @@ module Zizia
             :issn, :isbn, :conference_location,:conference_name,:event_date,:other_affiliation,:editor, :in_series,:file_extent, :file_format,
             :is_referenced_by
           ]
-         
+
         elsif wtype == "Presentation" then
           [ :abstract,:academic_affiliation,:additional_information,:alt_title,:date_available,:date_issued,
             :doi,:embargo_reason, :peerreviewed,:replaces,:language,:admin_set_id,:is_referenced_by,
@@ -259,12 +262,12 @@ module Zizia
             :other_affiliation,:editor, :in_series,:file_extent, :file_format
           ]
         end
-        
+
         #  :editor,:has_journal,:has_number,:has_volume,:in_series,:is_referenced_by,:isbn,:issn,
         #  :other_affiliation,:conference_location,:conference_name,:bibliographic_citation
         #]
       end
-      
+
   end
 end
 
