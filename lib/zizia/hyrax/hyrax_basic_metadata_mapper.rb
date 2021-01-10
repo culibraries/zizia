@@ -113,6 +113,9 @@ module Zizia
     def event_date
       single_value('event_date')
     end
+    def embargo_release_date
+      single_value('embargo_release_date')
+    end
     # We should accept visibility values that match the UI and transform them into
     # the controlled vocabulary term expected by Hyrax
     def visibility
