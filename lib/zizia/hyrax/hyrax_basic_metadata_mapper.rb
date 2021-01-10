@@ -206,7 +206,7 @@ module Zizia
          :rights_statement, :publisher, :date_created,
          :subject, :language, :identifier,
          :based_near, :related_url,
-         :bibliographic_citation, :source]
+         :bibliographic_citation, :source, :embargo_release_date]
       end
       # CU Boulder Overide
       def cuboulder_fields
