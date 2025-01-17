@@ -14,11 +14,11 @@ Gem::Specification.new do |gem|
   gem.files         = `git ls-files`.split("\n")
   gem.require_paths = ['lib']
 
-  gem.required_ruby_version = '>= 2.3.4'
+  gem.required_ruby_version = '~> 2.7.4', '< 3.0.0'
 
   gem.add_dependency 'active-fedora'
   gem.add_dependency 'kaminari'
-  gem.add_dependency 'rails', '~> 5.1.4'
+  gem.add_dependency 'rails', '~> 5.2.0'
   gem.add_dependency 'carrierwave'
   gem.add_dependency 'rails-controller-testing'
 
@@ -30,16 +30,17 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'coveralls'
   gem.add_development_dependency 'devise'
   gem.add_development_dependency 'devise-guests', '~> 0.6'
-  gem.add_development_dependency 'factory_bot'
+  gem.add_development_dependency 'factory_bot', '~> 6.3.0'
   gem.add_development_dependency 'fcrepo_wrapper'
-  gem.add_development_dependency 'ffaker'
+  gem.add_development_dependency 'ffaker', '~> 2.20.0'
+  gem.add_development_dependency 'ffi', '< 1.17'
   gem.add_development_dependency 'font-awesome-rails'
   gem.add_development_dependency 'hydra-role-management'
-  gem.add_development_dependency 'hyrax', '~> 2.5.1'
+  gem.add_development_dependency 'hyrax', '~> 3.0.0'
   gem.add_development_dependency 'hyrax-spec'
   gem.add_development_dependency 'jbuilder', '~> 2.5'
   gem.add_development_dependency 'jquery-rails'
-  gem.add_development_dependency 'listen', '>= 3.0.5', '< 3.2'
+  gem.add_development_dependency 'listen', '>= 2.7', '< 4.0'
   gem.add_development_dependency 'puma', '~> 3.7'
   gem.add_development_dependency 'rake'
   gem.add_development_dependency 'riiif', '~> 2.0'
@@ -48,8 +49,8 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'rspec'
   gem.add_development_dependency 'rspec-rails'
   gem.add_development_dependency 'rspec_junit_formatter'
-  gem.add_development_dependency "sass-rails", "~> 5.0.4"
-  gem.add_development_dependency 'selenium-webdriver'
+  gem.add_development_dependency 'sass-rails', '~> 5.0.7'
+  gem.add_development_dependency 'selenium-webdriver', '~> 3'
   gem.add_development_dependency 'solr_wrapper', '>= 0.3'
   gem.add_development_dependency 'spring'
   gem.add_development_dependency 'spring-watcher-listen', '~> 2.0.0'
@@ -60,5 +61,5 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'web-console', '>= 3.3.0'
   gem.add_development_dependency 'yard'
   gem.add_development_dependency 'font-awesome-sass', '~> 4.4.0'
-  gem.add_development_dependency 'sidekiq'
+  gem.add_development_dependency 'sidekiq', '= 6.5.12'
 end

@@ -15,3 +15,6 @@ tramp
 .\#*
 coverage/
 *.gem
+
+.bundle
+.idea
